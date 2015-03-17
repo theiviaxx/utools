@@ -1,0 +1,1873 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"he",
+				"heightlayer1"
+			],
+			[
+				"_L",
+				"_LayerHeight1"
+			],
+			[
+				"_Bas",
+				"_BaseBump"
+			],
+			[
+				"norm",
+				"normaDirection"
+			],
+			[
+				"modelMa",
+				"modelMatrixInverse"
+			],
+			[
+				"_Amb",
+				"_AmbIntensity"
+			],
+			[
+				"_Am",
+				"_AmbIntensity"
+			],
+			[
+				"Ver",
+				"VertexShaderOutput"
+			],
+			[
+				"Verte",
+				"VertexShaderOutput"
+			],
+			[
+				"Veer",
+				"VertexShaderInput"
+			],
+			[
+				"texcol",
+				"texcol_layer1"
+			],
+			[
+				"tex",
+				"texcol_layer1"
+			],
+			[
+				"asserN",
+				"assertIsNone  (function)"
+			],
+			[
+				"fi",
+				"filename"
+			],
+			[
+				"time",
+				"timeoutDuration"
+			],
+			[
+				"GetCom",
+				"GetComponent	type"
+			],
+			[
+				"ST",
+				"STARTF_USESHOWWINDOW  (variable)"
+			],
+			[
+				"ass",
+				"assettype	(local, instance)"
+			],
+			[
+				"asse",
+				"assettype	(local, instance)"
+			],
+			[
+				"asset",
+				"assettype"
+			],
+			[
+				"Coll",
+				"CollidedBelow"
+			],
+			[
+				"i",
+				"ignoreDistance"
+			],
+			[
+				"Camera",
+				"CameraVolume"
+			],
+			[
+				"ch",
+				"childCount"
+			],
+			[
+				"Bounds",
+				"bounds"
+			],
+			[
+				"vol",
+				"volumes"
+			],
+			[
+				"ta",
+				"target"
+			],
+			[
+				"pla",
+				"playerpoi"
+			],
+			[
+				"poin",
+				"pointsinplay"
+			],
+			[
+				"Poin",
+				"PointOfInterest"
+			],
+			[
+				"Fin",
+				"FindObjectsOfType	type"
+			],
+			[
+				"Trans",
+				"Transform"
+			],
+			[
+				"Pla",
+				"PlatformController"
+			],
+			[
+				"flex",
+				"flexDistance"
+			],
+			[
+				"Angle",
+				"AngleDir"
+			],
+			[
+				"Sma",
+				"SmartClamp"
+			],
+			[
+				"tr",
+				"transform"
+			],
+			[
+				"spee",
+				"speedDelta"
+			],
+			[
+				"cam",
+				"cameraHalfWidth"
+			],
+			[
+				"des",
+				"destination"
+			],
+			[
+				"Tran",
+				"Transform"
+			],
+			[
+				"yde",
+				"ydelta_set"
+			],
+			[
+				"zdel",
+				"zdelta_steps"
+			],
+			[
+				"tra",
+				"transitionDuration"
+			],
+			[
+				"zde",
+				"zdelta_steps"
+			],
+			[
+				"jump",
+				"jumpSpeed"
+			],
+			[
+				"targ",
+				"targetVelocity"
+			],
+			[
+				"ju",
+				"jumpAvailable"
+			],
+			[
+				"gr",
+				"gravityForce"
+			],
+			[
+				"vel",
+				"velocityChange"
+			],
+			[
+				"ve",
+				"velocityChange"
+			],
+			[
+				"over",
+				"overbottom"
+			],
+			[
+				"con",
+				"constrain_z"
+			],
+			[
+				"max",
+				"max_point"
+			],
+			[
+				"min",
+				"min_point"
+			],
+			[
+				"heig",
+				"height"
+			],
+			[
+				"Tr",
+				"Transform"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"index",
+				"indexy"
+			],
+			[
+				"cell",
+				"cellindex"
+			],
+			[
+				"Tra",
+				"Transform"
+			],
+			[
+				"sec",
+				"secure"
+			],
+			[
+				"tit",
+				"titleanchor"
+			],
+			[
+				"impl",
+				"implementation"
+			],
+			[
+				"curren",
+				"currentHeight"
+			],
+			[
+				"tar",
+				"targetCenter"
+			],
+			[
+				"curr",
+				"currentRotation"
+			],
+			[
+				"for",
+				"forward"
+			],
+			[
+				"topRay",
+				"topRayPos"
+			],
+			[
+				"is",
+				"isMoving"
+			],
+			[
+				"lock",
+				"lockCameraTimer"
+			],
+			[
+				"cen",
+				"centerOffset"
+			],
+			[
+				"oldSna",
+				"oldSnapSmooth"
+			],
+			[
+				"old",
+				"oldHeightSmooth"
+			],
+			[
+				"heigh",
+				"heightSmoothLag"
+			],
+			[
+				"snap",
+				"snapMaxSpeed"
+			],
+			[
+				"curre",
+				"currentRotation"
+			],
+			[
+				"an",
+				"angularMaxSpeed"
+			],
+			[
+				"ang",
+				"angularSmoothLag"
+			],
+			[
+				"Angl",
+				"angleVelocity"
+			],
+			[
+				"sna",
+				"snapMaxSpeed"
+			],
+			[
+				"An",
+				"AngleDistance"
+			],
+			[
+				"las",
+				"lastEndpoint"
+			],
+			[
+				"move",
+				"moveDirection"
+			],
+			[
+				"On",
+				"OnCollisionEnter	collision"
+			],
+			[
+				"new",
+				"newangle"
+			],
+			[
+				"Rota",
+				"Rotate	eulerAngles"
+			],
+			[
+				"Vector",
+				"Vector3	x, y, z"
+			],
+			[
+				"lastG",
+				"lastGunAngle"
+			],
+			[
+				"Ma",
+				"Mathf"
+			],
+			[
+				"Gm",
+				"GameObject"
+			],
+			[
+				"Vect",
+				"Vector3	x, y, z"
+			],
+			[
+				"inAi",
+				"inAirControlAcceleration"
+			],
+			[
+				"verti",
+				"verticalSpeed"
+			],
+			[
+				"mo",
+				"moveSpeed"
+			],
+			[
+				"wal",
+				"walkSpeed"
+			],
+			[
+				"targe",
+				"targetDirection"
+			],
+			[
+				"jup",
+				"jumping"
+			],
+			[
+				"In",
+				"Input"
+			],
+			[
+				"Vec",
+				"Vector3	x, y, z"
+			],
+			[
+				"controll",
+				"controlledDescent"
+			],
+			[
+				"Cop",
+				"CopyAssets"
+			],
+			[
+				"st",
+				"storeId"
+			],
+			[
+				"edi",
+				"editTagsHandler"
+			],
+			[
+				"swi",
+				"switchArtistUI"
+			],
+			[
+				"SWI",
+				"SwitchArtistWindow"
+			],
+			[
+				"SW",
+				"SwitchArtistWindow"
+			],
+			[
+				"Swi",
+				"SwitchArtistWindow"
+			],
+			[
+				"displ",
+				"displayUnit"
+			],
+			[
+				"drawS",
+				"_drawStacked"
+			],
+			[
+				"key",
+				"keyNameHeight"
+			],
+			[
+				"fon",
+				"fontSize"
+			],
+			[
+				"thu",
+				"thumbid"
+			],
+			[
+				"Sea",
+				"SearchQuerySet	(imported, instance)"
+			],
+			[
+				"res",
+				"results	(local, instance)"
+			],
+			[
+				"pa",
+				"pageEvent"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"flip",
+				"fliptimer"
+			],
+			[
+				"me",
+				"menucontact"
+			],
+			[
+				"menu",
+				"menuknowledge"
+			],
+			[
+				"men",
+				"menulife"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"li",
+				"list-style"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"border-ri",
+				"border-right-width"
+			],
+			[
+				"add",
+				"addLoginAction"
+			],
+			[
+				"obj",
+				"object_	(local, instance)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "utools/maya/widgets/snapswindow.py",
+			"settings":
+			{
+				"buffer_size": 5197,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "utools/maya/snaps.py",
+			"settings":
+			{
+				"buffer_size": 1906,
+				"line_ending": "Windows",
+				"name": "HE"
+			}
+		},
+		{
+			"file": "utools/maya/widgets/__init__.py",
+			"settings":
+			{
+				"buffer_size": 1292,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "utools/maya/common.py",
+			"settings":
+			{
+				"buffer_size": 1660,
+				"line_ending": "Windows",
+				"name": "import shiboken"
+			}
+		},
+		{
+			"file": "utools/maya/widgets/README.rst",
+			"settings":
+			{
+				"buffer_size": 117,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/theiv_000/SkyDrive/sandbox/Lib/site-packages/wg.pth",
+			"settings":
+			{
+				"buffer_size": 36,
+				"line_ending": "Windows",
+				"name": "C/work/depot/u1/main/scripts/python"
+			}
+		},
+		{
+			"file": "/C/Users/theiv_000/Documents/maya/modules/ubd.mod",
+			"settings":
+			{
+				"buffer_size": 156,
+				"line_ending": "Windows",
+				"name": "+ PLATFORM:win64 ubd 0.1 C:/work/depot/u1/main"
+			}
+		},
+		{
+			"file": "/C/tmp/builds/main_1001.txt",
+			"settings":
+			{
+				"buffer_size": 17,
+				"line_ending": "Windows",
+				"name": "requests == 1.0.0"
+			}
+		},
+		{
+			"contents": "ca:\n  [x] sce @done (14-12-18 11:09)\n  [ ] irwd\n  [x] cox @done (14-12-18 11:09)\n  [x] crr @done (14-12-18 11:48)\n  [x] gas @done (14-12-18 11:44)\n  [ ] cozy\n  [ ] big jim PM\n  [ ] mail forwarding\n  [ ] sun and sail\nwa:\n  [ ] comcast\n  [x] sound energy @done (14-12-21 12:21)\n",
+			"settings":
+			{
+				"buffer_size": 276,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Program Files (x86)/Go Server/config/cruise-config.xml",
+			"settings":
+			{
+				"buffer_size": 304,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 372,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/work/depot/u1/main/scripts/python/ubd/maya/normal_tools.py",
+			"settings":
+			{
+				"buffer_size": 8158,
+				"line_ending": "Windows",
+				"name": "# ================================================"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 305.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Snippet: Prototype"
+			]
+		],
+		"width": 480.0
+	},
+	"console":
+	{
+		"height": 245.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/theiv_000/Google Drive/projects/utools",
+		"/C/Users/theiv_000/Google Drive/projects/utools/utools",
+		"/C/Users/theiv_000/Google Drive/projects/utools/utools/maya",
+		"/C/Users/theiv_000/Google Drive/projects/utools/utools/maya/widgets"
+	],
+	"file_history":
+	[
+		"/C/Users/theiv_000/Google Drive/projects/utools/utools/__init__.py",
+		"/C/Users/theiv_000/Documents/itinerary.todo",
+		"/C/Users/theiv_000/Envs/main/Lib/site-packages/requests/__init__.py",
+		"/C/END",
+		"/C/Users/theiv_000/Documents/maya/2015-x64/Maya.env",
+		"/C/Users/theiv_000/Documents/maya/scripts/userSetup.py",
+		"/C/Users/theiv_000/Documents/maya/2015-x64/scripts/userSetup.mel",
+		"/C/Users/theiv_000/SkyDrive/sandbox/Lib/site-packages/flask_pypi_proxy/views/package.py",
+		"/C/Users/theiv_000/SkyDrive/sandbox/Lib/site-packages/flask_pypi_proxy/views/__init__.py",
+		"/C/Users/theiv_000/SkyDrive/sandbox/app.py",
+		"/C/Users/theiv_000/SkyDrive/sandbox/Lib/site-packages/flask_pypi_proxy/app.py",
+		"/C/Users/theiv_000/.devpi/server/.xproc/devpi-server/xprocess.PID",
+		"/C/Users/theiv_000/SkyDrive/sandbox/Lib/site-packages/devpi_web/templates/index.pt",
+		"/C/Python27/Lib/site-packages/django/conf/__init__.py",
+		"/C/Users/theiv_000/SkyDrive/sandbox/myapp/foo.pth",
+		"/C/Users/theiv_000/SkyDrive/sandbox/myapp/foo/__init__.py",
+		"/C/Users/theiv_000/SkyDrive/sandbox/foo.pth",
+		"/C/Users/theiv_000/Google Drive/projects/django-jsonview/run.sh",
+		"/C/tmp/django-jsonview/test_settings.py",
+		"/C/Program Files/Autodesk/Maya2015/modules/fbx.mod",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/User/python-header.sublime-snippet",
+		"/C/Users/theiv_000/Google Drive/projects/utools/utools/maya/__init__.py",
+		"/C/Users/theiv_000/Google Drive/projects/utools/utools/maya/widgets/__init__.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/ui/gridsnap.py",
+		"/C/work/depot/u1/main/Assets/Shaders/shd_bland_2lyr.shader",
+		"/C/Users/theiv_000/Documents/Future.todo",
+		"/C/work/depot/u1/main/Assets/Shaders/shd_diffuse.shader",
+		"/C/work/depot/u1/main/Assets/Scripts/Room.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/SmartFollow.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/SmartClamp.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/SmartZoom.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/SmartProperties.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/SmartTransition.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/CameraVolume.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Projectile/Projectile.cs",
+		"/C/work/depot/u1/main/Assets/Scripts/Player/PlatformController.cs",
+		"/C/work/depot/u1/main/Assets/Shaders/shd_vertexcolor.shader",
+		"/C/work/depot/u1/main/Assets/Shaders/shd_normal.shader",
+		"/C/work/depot/u1/main/Assets/Shaders/shd_texture.shader",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/__init__.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/exporter.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/log.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/logging.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/__init__.py",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/PointOfInterest.cs",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/User/csdox.sublime-snippet",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Unity3D Snippets and Completes/GUI-Button.sublime-snippet",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/common/__init__.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/ui/perforcemenu.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/tests.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/headrevision.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/revision.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/ui/__init__.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/changelist.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/commands.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/build.bat",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/errors.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/__init__.py",
+		"/C/Users/theiv_000/Google Drive/projects/p4py/core.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/assets.py",
+		"/C/work/depot/u1/main/Assets/Shaders/DoubleSided.shader",
+		"/C/work/depot/u1/main/Assets/Scripts/Door.cs",
+		"/C/work/depot/u1/main/Assets/Shaders/NewShader.shader",
+		"/C/work/depot/u1/main/sourcedb/textures/cmn_flat_clr.texture",
+		"/C/work/depot/u1/main/src/toolslib/database/database.sln",
+		"/C/work/depot/u1/main/sourcedb/materials/cmn_grid_wall.material",
+		"/C/work/depot/u1/main/sourcedb/materials/cmn_grid_ground.material",
+		"/C/work/depot/u1/main/sourcedb/materials/cmn_grid_green.material",
+		"/C/work/depot/u1/main/sourcedb/materials/cmn_grid_blue.material",
+		"/C/work/depot/u1/main/sourcedb/textures/cmn_grid_dark.texture",
+		"/C/work/depot/u1/main/sourcedb/textures/cmn_grid_light.texture",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Theme - Spacegray/Spacegray.sublime-theme",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/data/log/main.log",
+		"/C/tmp/debug/Gruntfile.js",
+		"/C/tmp/debug/index.html",
+		"/C/tmp/debug/app/index.html",
+		"/C/tmp/debug/package.json",
+		"/C/tmp/debug/bower.json",
+		"/C/tmp/debug/.bowerrc",
+		"/C/Users/theiv_000/SkyDrive/websites/frog_app/Gruntfile.js",
+		"/C/tmp/debug/grunt.js",
+		"/C/tmp/debug/index.htmlo",
+		"/C/work/depot/u1/main/Assets/Scripts/EnemyController.cs",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Unity3D Script Reference Search/Main.sublime-menu",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Perforce/Main.sublime-menu",
+		"/C/tmp/frogdist/setup.py",
+		"/C/work/depot/u1/main/Assets/Standard Assets/Skyboxes/_skybox info.txt",
+		"/c/work/depot/u1/main/Assets/Scripts/utilities.cs",
+		"/c/work/depot/u1/main/src/toolslib/utilties.cs",
+		"/C/work/depot/u1/main/Library - Copy/FailedAssetImports.txt",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/User/Perforce.sublime-settings",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Perforce/Perforce.sublime-settings",
+		"/c/work/depot/u1/main/Assets/3D Platformer Tutorial/Blob-Shadow/ShadowProjection.shader",
+		"/c/work/depot/u1/main/Assets/3D Platformer Tutorial/Materials/bytestexture.mat",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/Theme - Afterglow/Afterglow.sublime-theme",
+		"/C/work/depot/u1/main/Assets/Scripts/Portal.cs",
+		"/C/work/depot/u1/main/scripts/python/ubd/files.py",
+		"/C/work/depot/u1/main/scripts/python/ubd/maya/common/ext.py",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/lib/Python27_x64/FbxCommon.py",
+		"/C/work/depot/u1/main/Assets/Scenes/levels/tst_cam/test1.fbx",
+		"/C/work/depot/u1/main/Assets/Scenes/levels/tst_cam/test.fbx",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/samples/ImportScene/ImportScene.py",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/samples/ImportScene/DisplayMesh.py",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/samples/ExportScene04/ExportScene04.py",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/samples/SplitMeshPerMaterial/SplitMeshPerMaterial.py",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/samples/ExportScene02/ExportScene02.py",
+		"/C/Program Files/Autodesk/FBX/FBX Python SDK/2015.1/samples/ExportScene01/ExportScene01.py",
+		"/C/tmp/hfMaya2FBX.py",
+		"/C/work/depot/u1/main/Assets/Scripts/PlatformController.cs",
+		"/C/Users/theiv_000/AppData/Roaming/Sublime Text 2/Packages/PlainTasks/messages/Tutorial.todo",
+		"/C/work/depot/u1/main/Assets/Scripts/Enemy.cs",
+		"/C/Users/theiv_000/Documents/maya/FBX/Logs/2015.0/maya2015imp.log",
+		"/C/work/depot/u1/main/Assets/Scenes/levels/tst_nav/tst_nav_camera1.mb.fbx",
+		"/C/work/depot/u1/main/scripts/ubd/maya/common/ext.py",
+		"/C/work/depot/u1/main/scripts/ubd/files.py",
+		"/C/work/depot/u1/main/scripts/ubd/maya/exporter.py",
+		"/c/work/depot/u1/main/scripts/ubd/maya/ubdnodes.py",
+		"/C/work/depot/u1/main/main.sublime-project",
+		"/C/work/depot/u1/main/scripts/ubd/maya/__init__.py",
+		"/C/work/depot/u1/main/scripts/ubd/__init__.py",
+		"/C/work/depot/u1/main/Assets/Scenes/levels/tst_nav/tst_nav_camera.fbx.meta",
+		"/C/Users/theiv_000/SkyDrive/websites/omnisport/screenshot.bat",
+		"/c/work/depot/u1/main/Assets/Animations.meta",
+		"/c/work/depot/u1/main/Assets/Materials/Camera_Volume.mat",
+		"/c/work/depot/u1/main/Library/metadata/00/00106d09cd1103a2a0008cea4ada8c59",
+		"/C/work/depot/u1/main/Assets/Scripts/Camera/SmartCamera.cs"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\work\\depot\\u1\\main\\Assets\\Scripts",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\static\\j\\libs",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\static\\j\\libs",
+			"C:\\Python27\\Lib\\site-packages\\django",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\*.py",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\static\\j",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog",
+			"C:\\Users\\Dixon\\Sites\\dev\\frog\\static\\j\\libs"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\\",
+			"magic",
+			"\\",
+			";",
+			"	",
+			"constrainY",
+			"PointOfInterest",
+			"AddVolume",
+			"SetVolume",
+			"SetIgnoreDistance",
+			"\"",
+			"{\"textures\": {\"color\": \"cmn_grid_ground\",\"normal\": \"cmn_flat_nml\",\"spec\": \"cmn_flat_spc\"}}",
+			"\"",
+			"IsClamped()",
+			"	",
+			"properties.height",
+			"properties.width",
+			"	",
+			"Debug.Log",
+			"gizmoDistance",
+			"\\",
+			"vcvarsall",
+			"	",
+			"'",
+			"cameravolume",
+			"	",
+			"ThirdPersonControllerCS",
+			"controller",
+			"player",
+			"opp",
+			"deltaTime",
+			"&",
+			"timeDelta",
+			"timedelta",
+			"angularMaxSpeed",
+			"renderer",
+			"-",
+			"i",
+			"	",
+			"IsGroundedWithTimeout",
+			"SuperJump",
+			"	",
+			"omnisport",
+			"’",
+			"/i",
+			"visibility",
+			";",
+			"'",
+			";",
+			".valueOf('%')",
+			"%",
+			"title",
+			"	",
+			"a:",
+			"’",
+			"\\",
+			"/img",
+			"”",
+			"“",
+			"’",
+			"res.errors",
+			"’",
+			"{%",
+			"1050",
+			"private",
+			"dataset",
+			",",
+			"\\n",
+			"?b={build}",
+			"TEMPLATE_CONTEXT_PROCESSORS",
+			"this",
+			"	",
+			"pbar.stProgress.text = ",
+			"socket",
+			"Image",
+			"MEDIA_ROOT",
+			"settings.MEDIA_ROOT",
+			"MEDIA_ROOT",
+			"this.point",
+			"FrogStaticRoot",
+			"confirm",
+			"alert",
+			"FrogStaticRoot",
+			"getHashForFile",
+			"MEDIA_URL",
+			"SITE_URL",
+			"DOMAIN",
+			"MANAGERS",
+			"MEDIA_ROOT",
+			"FFMPEG",
+			"SCRUB_DURATION",
+			"FFMPEG_ARGS",
+			"FFMPEG",
+			"MEDIA_ROOT",
+			"THUMB_SIZE",
+			"IMAGE_SMALL_SIZE",
+			"IMAGE_SIZE_CAP",
+			"FFMPEG",
+			"MEDIA_ROOT",
+			"$",
+			"$time()",
+			"c_",
+			"	",
+			"skipLabel",
+			"MilkChart.Shapes.getLength()",
+			"kwargs",
+			"self",
+			"self.",
+			"../../resources/themes/images/gray",
+			"menu/checked.gif",
+			"self.",
+			"galleryStore",
+			"Store",
+			"Ext.require",
+			"Ext.",
+			"Ext",
+			"this.controls",
+			"this.controlss",
+			"self.id",
+			"fireEvent",
+			"STORE",
+			"TOOLBAR",
+			"this.toolbar",
+			"object_",
+			"requestData['request']",
+			"requestData['DELETE']",
+			"requestData['object']",
+			"requestData['PUT']"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"/",
+			"\\n",
+			"    ",
+			"\\\"",
+			"    ",
+			"properties.Height()",
+			"properties.Width()",
+			"    ",
+			"distance",
+			"/",
+			"    ",
+			"\"",
+			"cameraVolume",
+			"    ",
+			"PlatformController",
+			"length",
+			"",
+			"I",
+			"    ",
+			"'",
+			"/img",
+			",",
+			"\"",
+			",",
+			".indexOf('%')",
+			"    ",
+			"'",
+			"/",
+			"img",
+			"\"",
+			"'",
+			",\\n",
+			"','",
+			"',\\n",
+			"\\n',",
+			"?b={{build}}",
+			"self",
+			"    ",
+			"pbar.setText(",
+			"ROOT",
+			"this.__point",
+			"settings.MEDIA_URL",
+			"settings.SITE_URL",
+			"settings.DOMAIN",
+			"settings.MANAGERS",
+			"settings.MEDIA_ROOT",
+			"settings.FFMPEG",
+			"settings.SCRUB_DURATION",
+			"settings.FFMPEG_ARGS",
+			"settings.FFMPEG",
+			"settings.MEDIA_ROOT",
+			"settings.THUMB_SIZE\nsettings.THUMB_SIZE\nsettings.MEDIA_ROOT",
+			"settings.THUMB_SIZE",
+			"settings.IMAGE_SMALL_SIZE",
+			"settings.IMAGE_SIZE_CAP",
+			"settings.FFMPEG",
+			"settings.MEDIA_ROOT",
+			"Date.now()",
+			"",
+			"    ",
+			"Object.getLength(MilkChart.Shapes)",
+			"options",
+			"/static/frog/i/gray",
+			"Store",
+			"ToolBar",
+			"TOOLBAR",
+			"request",
+			"request.DELETE",
+			"object_",
+			"request.PUT",
+			"",
+			"sourcepath",
+			"videopath",
+			"/",
+			"../i",
+			"GameVersus(",
+			"GameVersus.",
+			"    ",
+			"Ladder.notify(",
+			"context['request'].user",
+			"context['request'].PUT",
+			"context['request'].GET",
+			"context['request'].POST",
+			"context['object']",
+			"context",
+			"res.append",
+			"moo",
+			"MEDIA_URL",
+			"filters",
+			"frog",
+			"Frog",
+			"name",
+			"    ",
+			"typeOf",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "utools/maya/widgets/snapswindow.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "utools/maya/snaps.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1906,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "HE",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "utools/maya/widgets/__init__.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1292,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "utools/maya/common.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1367,
+								1367
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import shiboken",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "utools/maya/widgets/README.rst",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								117,
+								117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/RestructuredText/reStructuredText.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/theiv_000/SkyDrive/sandbox/Lib/site-packages/wg.pth",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"auto_name": "C/work/depot/u1/main/scripts/python",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/theiv_000/Documents/maya/modules/ubd.mod",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								156,
+								156
+							]
+						],
+						"settings":
+						{
+							"auto_name": "+ PLATFORM:win64 ubd 0.1 C:/work/depot/u1/main",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/tmp/builds/main_1001.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"auto_name": "requests == 1.0.0",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PlainTasks/PlainTasks.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Program Files (x86)/Go Server/config/cruise-config.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								304,
+								304
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 372,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								372,
+								372
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/C/work/depot/u1/main/scripts/python/ubd/maya/normal_tools.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# ================================================",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.jslint_result_view":
+	{
+		"height": 199.0
+	},
+	"project": "utools.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"3lyr",
+				"Assets/Shaders/shd_blend_3lyr.shader"
+			],
+			[
+				"2ly",
+				"Assets/Shaders/shd_bland_2lyr.shader"
+			],
+			[
+				"1ly",
+				"Assets/Shaders/shd_blend_1lyr.shader"
+			],
+			[
+				"shd_n",
+				"Assets/Shaders/shd_normal.shader"
+			],
+			[
+				"shdvtx",
+				"Assets/Shaders/shd_vtx_diffuse.shader"
+			],
+			[
+				"shd_diff",
+				"Assets/Shaders/shd_diffuse.shader"
+			],
+			[
+				"shd_tex",
+				"Assets/Shaders/shd_texture.shader"
+			],
+			[
+				"shd_sha",
+				"Assets/Shaders/shd_layerblend.shader"
+			],
+			[
+				"shd_ver",
+				"Assets/Shaders/shd_vertexcolor.shader"
+			],
+			[
+				"shd_no",
+				"Assets/Shaders/shd_normal.shader"
+			],
+			[
+				"shd_te",
+				"Assets/Shaders/shd_texture.shader"
+			],
+			[
+				"shd_",
+				"Assets/Shaders/shd_diffuse.shader"
+			],
+			[
+				"poi",
+				"Assets/Scripts/Camera/PointOfInterest.cs"
+			],
+			[
+				"doub",
+				"Assets/Shaders/DoubleSided.shader"
+			],
+			[
+				"door",
+				"Assets/Scripts/Door.cs"
+			],
+			[
+				"asset.py",
+				"scripts/python/ubd/assets.py"
+			],
+			[
+				"ene",
+				"Assets/Scripts/EnemyController.cs"
+			],
+			[
+				"port",
+				"Assets/Scripts/Portal.cs"
+			],
+			[
+				"room",
+				"Assets/Scripts/Room.cs"
+			],
+			[
+				"ext.",
+				"scripts/python/ubd/maya/common/ext.py"
+			],
+			[
+				"po",
+				"Assets/Scripts/Camera/PointOfInterest.cs"
+			],
+			[
+				"smartzom",
+				"Assets/Scripts/Camera/SmartZoom.cs"
+			],
+			[
+				"enecon",
+				"Assets/Scripts/EnemyController.cs"
+			],
+			[
+				"doo",
+				"Assets/Scripts/Door.cs"
+			],
+			[
+				"cam",
+				"Assets/Scripts/Camera/CameraVolume.cs"
+			],
+			[
+				"omni",
+				"/C/Users/Dixon/Sites/omnisport/css/omnisport.css"
+			],
+			[
+				"url",
+				"frog/urls.py"
+			],
+			[
+				"fr.gal",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"vie",
+				"frog/views.py"
+			],
+			[
+				"froui",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"fro.up",
+				"frog/static/j/libs/frog.uploader.js"
+			],
+			[
+				"fr.gal.js",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"fr.ui",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"fr.thumb",
+				"frog/static/j/libs/frog.thumbnail.js"
+			],
+			[
+				"gall",
+				"frog/templates/frog/gallery.html"
+			],
+			[
+				"styl",
+				"frog/static/c/style.css"
+			],
+			[
+				"fthum.js",
+				"frog/static/j/libs/frog.thumbnail.js"
+			],
+			[
+				"fro.thu",
+				"frog/static/j/libs/frog.thumbnail.js"
+			],
+			[
+				"fro.gal",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"queb.js",
+				"frog/static/j/libs/frog.queryBuilder.js"
+			],
+			[
+				"querb",
+				"frog/static/j/libs/frog.queryBuilder.js"
+			],
+			[
+				"fro.vi",
+				"frog/static/j/libs/frog.viewer.js"
+			],
+			[
+				"fro.js",
+				"frog/static/j/libs/frog.js"
+			],
+			[
+				"fr/admin",
+				"frog/admin.py"
+			],
+			[
+				"ui.",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"sel",
+				"frog/static/j/libs/selection.js"
+			],
+			[
+				"fro.ui",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"vide",
+				"frog/videoThread.py"
+			],
+			[
+				"st.css",
+				"frog/static/c/style.css"
+			],
+			[
+				"fro.g",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"frog.j",
+				"frog/static/j/libs/frog.js"
+			],
+			[
+				"fro.gal.",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"fro.qu",
+				"frog/static/j/libs/frog.queryBuilder.js"
+			],
+			[
+				"fro.th",
+				"frog/static/j/libs/frog.thumbnail.js"
+			],
+			[
+				"sel.js",
+				"frog/static/j/libs/selection.js"
+			],
+			[
+				"fro/styl.",
+				"frog/static/c/style.css"
+			],
+			[
+				"fro/st",
+				"frog/static/c/style.css"
+			],
+			[
+				"fr.ui.j",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"fr.js",
+				"frog/static/j/libs/frog.js"
+			],
+			[
+				"fro/st.c",
+				"frog/static/c/style.css"
+			],
+			[
+				"fro.ga",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"fro/ga",
+				"frog/templates/frog/gallery.html"
+			],
+			[
+				"fro/s.css",
+				"frog/static/c/style.css"
+			],
+			[
+				"st.cs",
+				"static/c/rest.css"
+			],
+			[
+				"fro.j",
+				"frog/static/j/libs/frog.js"
+			],
+			[
+				"temp/im",
+				"frog/templates/frog/image.html"
+			],
+			[
+				"fro/fro.js",
+				"frog/static/j/libs/frog.js"
+			],
+			[
+				"fro/fgal.js",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"fro/ui.js",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"fro/mo",
+				"frog/models.py"
+			],
+			[
+				"fro/up",
+				"frog/uploader.py"
+			],
+			[
+				"fro/uploader",
+				"frog/static/j/libs/frog.uploader.js"
+			],
+			[
+				"fro.up.j",
+				"static/frog/j/libs/frog.uploader.js"
+			],
+			[
+				"fro.vi.js",
+				"frog/static/j/libs/frog.viewer.js"
+			],
+			[
+				"fro.ui.",
+				"frog/static/j/libs/frog.ui.js"
+			],
+			[
+				"fro.ga.js",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"fro.gal.js",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"fr.ga.j",
+				"frog/static/j/libs/frog.gallery.js"
+			],
+			[
+				"com.py",
+				"frog/common.py"
+			],
+			[
+				"gal.ht",
+				"frog/templates/frog/gallery.html"
+			],
+			[
+				"st/c/st",
+				"static/c/style.css"
+			],
+			[
+				"style",
+				"static/c/style.css"
+			],
+			[
+				"frog.js",
+				"frog/static/j/libs/frog.js"
+			],
+			[
+				"fr.qu",
+				"frog/static/j/libs/frog.queryBuilder.js"
+			],
+			[
+				"urls.",
+				"frog/urls.py"
+			],
+			[
+				"sen",
+				"frog/sendFile.py"
+			],
+			[
+				"co",
+				"frog/common.py"
+			],
+			[
+				"upl",
+				"frog/uploader.py"
+			],
+			[
+				"",
+				"apps/ladder/views.py"
+			],
+			[
+				"la/mo",
+				"ladder/models.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/theiv_000/SkyDrive/websites/omnisport/omnisport.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 166.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
