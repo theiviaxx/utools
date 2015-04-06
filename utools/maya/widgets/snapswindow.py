@@ -29,6 +29,7 @@ from maya import cmds
 from PySide import QtGui, QtCore
 
 from utools.maya import snaps
+from utools.maya import common
 
 class SnapsWindow(QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -108,11 +109,11 @@ class SnapsWindow(QtGui.QMainWindow):
             btngroup.addButton(btn)
 
     def buildGrid(self):
-        editor = cmds.getPanel(wf=True)
+        state = cmds.grid(q=True, toggle=True)
         group = QtGui.QGroupBox(self)
         group.setTitle('Grid')
         group.setCheckable(True)
-        group.setChecked(cmds.modelEditor(editor, q=True, grid=True))
+        group.setChecked(state)
         group.toggled.connect(snaps.enableGrid)
         group.setFlat(True)
         layout = QtGui.QHBoxLayout(group)
@@ -134,3 +135,10 @@ class SnapsWindow(QtGui.QMainWindow):
             btn.clicked.connect(partial(snaps.setGridSpacing, value))
             layout.addWidget(btn)
             btngroup.addButton(btn)
+
+
+def main():
+    win = SnapsWindow(common.getMayaWindow())
+    win.show()
+
+    return win
