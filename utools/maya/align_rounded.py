@@ -1,8 +1,32 @@
+##################################################################################################
+# Copyright (c) 2014 Brett Dixon
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in 
+# the Software without restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the 
+# Software, and to permit persons to whom the Software is furnished to do so, 
+# subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all 
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS 
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+##################################################################################################
+
 from maya import OpenMaya as om
 from maya import OpenMayaMPx as omx
 
 
 class AlignRoundedCommand(omx.MPxCommand):
+    """AlignRounded takes the selected edges and aligns the normals to the added face vectors. 
+    This is typically useful for rounded surfaces and yields a nicer normals layout.
+    """
     def __init__(self):
         super(AlignRoundedCommand, self).__init__()
 
@@ -10,6 +34,7 @@ class AlignRoundedCommand(omx.MPxCommand):
         self._faceverts = {}
         self._currentnormals = []
         self._currentfacenormals = []
+        self._currentlocked = [] # (vtx, locked)
         self._mesh = None
 
     def isUndoable(self):
@@ -31,6 +56,10 @@ class AlignRoundedCommand(omx.MPxCommand):
             seliter.getDagPath(dag, comp)
             
             mesh = om.MFnMesh(dag)
+            nmlcount = om.MIntArray()
+            nmlids = om.MIntArray()
+            mesh.getNormalIds(nmlcount, nmlids)
+            self._currentlocked = [(n, mesh.isNormalLocked(n)) for n in nmlids]
             
             ## -- Get all of our border edges:
             eiter = om.MItMeshEdge(dag)
@@ -50,7 +79,6 @@ class AlignRoundedCommand(omx.MPxCommand):
                 veca = om.MVector()
                 mesh.getPolygonNormal(faces[0], veca)
                 if eiter.isSmooth():
-                    # self._currentedges[mesh].append(eiter.index())
                     vecb = om.MVector()
                     mesh.getPolygonNormal(faces[1], vecb)
                     vec = veca + vecb
@@ -100,7 +128,7 @@ class AlignRoundedCommand(omx.MPxCommand):
             for f in flist:
                 normal = om.MVector()
                 self._mesh.getFaceVertexNormal(f, idx, normal)
-                self._currentfacenormals.append(f, idx, normal)
+                self._currentfacenormals.append((f, idx, normal))
 
 
         self.redoIt()
@@ -110,7 +138,19 @@ class AlignRoundedCommand(omx.MPxCommand):
             self._mesh.setVertexNormal(normal, idx)
 
         for f, idx, normal in self._currentfacenormals:
-            self._mesh.getFaceVertexNormal(normal, f, idx)
+            self._mesh.setFaceVertexNormal(normal, f, idx)
+
+        locked = [i for i, n in self._currentlocked if n]
+        util = om.MScriptUtil()
+        arr = om.MIntArray()
+        util.createIntArrayFromList(locked, arr)
+        self._mesh.lockVertexNormals(arr)
+
+        unlocked = [i for i, n in self._currentlocked if not n]
+        util = om.MScriptUtil()
+        arr = om.MIntArray()
+        util.createIntArrayFromList(unlocked, arr)
+        self._mesh.unlockVertexNormals(arr)
 
     def redoIt(self):
         for idx, vec in self._verts.iteritems():

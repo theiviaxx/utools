@@ -1,8 +1,27 @@
+##################################################################################################
+# Copyright (c) 2014 Brett Dixon
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in 
+# the Software without restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the 
+# Software, and to permit persons to whom the Software is furnished to do so, 
+# subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all 
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS 
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+##################################################################################################
 
 """The AlignAuto command will take the last selected component and use its normal to set all
-selected components to
-
-vector variable will be 
+selected component's normals to.  For example if you select several faces then a vertex, this will
+use the vertex normal and set all selected faces to that normal.
 """
 from maya import OpenMaya as om
 from maya import OpenMayaMPx as omx
@@ -18,35 +37,27 @@ class AlignAutoCommand(omx.MPxCommand):
         self._currentverts = [] # (vtx, normal)
         self._currentfaceverts = [] # (face, vtx, normal)
         self._currentlocked = [] # (vtx, locked)
-        self._currentfacelocked = [] # (face, vtx, locked)
         self._mesh = None
 
     def isUndoable(self):
         return True
 
     def doIt(self, args):
-        self._verts = []
-        self._faceverts = []
         border = []
         facelist = []
         
         selection = om.MSelectionList()
         om.MGlobal.getActiveSelectionList(selection, True)
 
-        ## -- Get last component
         dag = om.MDagPath()
         comp = om.MObject()
         if selection.length() == 0:
             return
 
+        ## -- Get last component
         selection.getDagPath(selection.length() - 1, dag, comp)
-
-        print comp.apiTypeStr()
         
-        if comp.isNull():
-            ## -- No selection?
-            pass
-        elif comp.apiType() == om.MFn.kMeshPolygonComponent:
+        if comp.apiType() == om.MFn.kMeshPolygonComponent:
             faceiter = om.MItMeshPolygon(dag, comp)
             while not faceiter.isDone():
                 faceiter.getNormal(self._normal)
@@ -67,32 +78,6 @@ class AlignAutoCommand(omx.MPxCommand):
                 vertiter.getNormal(self._normal)
                 vertiter.next()
 
-        # print vec.x, vec.y, vec.z
-
-        # seliter = om.MItSelectionList(selection, om.MFn.kMeshPolygonComponent)
-        # dag = om.MDagPath()
-        # comp = om.MObject()
-        # while not seliter.isDone():
-        #     seliter.getDagPath(dag, comp)
-            
-        #     self._mesh = om.MFnMesh(dag)
-
-        #     faceiter = om.MItMeshPolygon(dag, comp)
-        #     while not faceiter.isDone():
-        #         vertlist = om.MIntArray()
-        #         self._mesh.getPolygonVertices(faceiter.index(), vertlist)
-        #         self._verts[faceiter.index()] = list(vertlist)
-        #         self._currentverts[faceiter.index()] = []
-        #         for vtx in vertlist:
-        #             vertnormal = om.MVector()
-        #             self._mesh.getFaceVertexNormal(faceiter.index(), vtx, vertnormal)
-        #             self._currentverts[faceiter.index()].append((vtx, vertnormal))
-
-        #         faceiter.next()
-            
-        #     seliter.next()
-
-
         seliter = om.MItSelectionList(selection, om.MFn.kMeshPolygonComponent)
         dag = om.MDagPath()
         comp = om.MObject()
@@ -109,11 +94,6 @@ class AlignAutoCommand(omx.MPxCommand):
             faceiter = om.MItMeshPolygon(dag, comp)
             while not faceiter.isDone():
                 facelist.append(faceiter.index())
-
-                nmlids = om.MIntArray()
-                self._mesh.getFaceNormalIds(faceiter.index(), nmlids)
-                self._currentfacelocked = [(faceiter.index(), n, self._mesh.isNormalLocked(n)) for n in nmlids]
-
                 faceiter.next()
 
             faceset = set(facelist)
@@ -139,7 +119,6 @@ class AlignAutoCommand(omx.MPxCommand):
                                 self._currentverts.append((eiter.index(0), veca))
                                 self._currentverts.append((eiter.index(1), vecb))
                             else:
-                                ## -- Hard edge single face
                                 self._faceverts.append((faceidx, eiter.index(0), None))
                                 self._faceverts.append((faceidx, eiter.index(1), None))
                                 self._currentfaceverts.append((faceidx, eiter.index(0), veca))
@@ -173,7 +152,7 @@ class AlignAutoCommand(omx.MPxCommand):
         for face, vtx, nml in self._currentfaceverts:
             self._mesh.setFaceVertexNormal(nml, face, vtx)
 
-
+        ## -- Reset locked/unlocked normals
         locked = [i for i, n in self._currentlocked if n]
         util = om.MScriptUtil()
         arr = om.MIntArray()
@@ -186,38 +165,11 @@ class AlignAutoCommand(omx.MPxCommand):
         util.createIntArrayFromList(unlocked, arr)
         self._mesh.unlockVertexNormals(arr)
 
-        # locked = [(f, i) for f, i, n in self._currentfacelocked if n]
-        # if locked:
-        #     faces, verts = zip(*locked)
-        #     util = om.MScriptUtil()
-        #     farr = om.MIntArray()
-        #     util.createIntArrayFromList(faces, farr)
-
-        #     util = om.MScriptUtil()
-        #     varr = om.MIntArray()
-        #     util.createIntArrayFromList(verts, varr)
-        #     self._mesh.lockFaceVertexNormals(farr, varr)
-
-        # unlocked = [(f, i) for f, i, n in self._currentfacelocked if not n]
-        # if unlocked:
-        #     faces, verts = zip(*unlocked)
-        #     util = om.MScriptUtil()
-        #     farr = om.MIntArray()
-        #     util.createIntArrayFromList(faces, farr)
-
-        #     util = om.MScriptUtil()
-        #     varr = om.MIntArray()
-        #     util.createIntArrayFromList(verts, varr)
-        #     self._mesh.unlockFaceVertexNormals(farr, varr)
-
-
     def redoIt(self):
-        # print self._verts
         for vtx, nml in self._verts:
             nml = nml or self._normal
             self._mesh.setVertexNormal(self._normal, vtx)
 
-        #print self._faceverts
         for face, vtx, nml in self._faceverts:
             nml = nml or self._normal
             self._mesh.setFaceVertexNormal(nml, face, vtx)
