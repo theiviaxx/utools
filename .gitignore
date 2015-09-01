@@ -42,3 +42,4 @@ docs/_build
 
 *.sublime-workspace
 *.sublime-project
+wingdbstub.py

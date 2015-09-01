@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="ui">
+    <file>res/ic_check_box_outline_blank_white_24dp_1x.png</file>
+    <file>res/ic_check_box_white_24dp_1x.png</file>
+    <file>res/ic_done_white_24dp_2x.png</file>
+    <file>res/ic_error_white_24dp_2x.png</file>
+    <file>res/ic_expand_more_white_24dp_1x.png</file>
+    <file>res/ic_expand_more_white_24dp_2x.png</file>
+    <file>res/ic_play_arrow_white_24dp_1x.png</file>
+    <file>res/ic_play_arrow_white_24dp_2x.png</file>
+    <file>res/ic_stop_white_24dp_2x.png</file>
+    <file>res/ic_warning_white_24dp_2x.png</file>
+  </qresource>
+</RCC>
