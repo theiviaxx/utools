@@ -66,7 +66,7 @@ class Validator(six.with_metaclass(ValidationRegistry, object)):
 
     @property
     def enabled(self):
-        return self._enabled and self.visible
+        return self._enabled
 
     @enabled.setter
     def enabled(self, enabled):
@@ -101,6 +101,7 @@ class Runner(object):
         self._timeend = 0.0
         self._timestart = time.clock()
         self._running = True
+        self._canceled = False
         LOGGER.info('Started validations')
 
         try:
@@ -116,6 +117,8 @@ class Runner(object):
 
                         self._count += 1
                         yield self._validator, i
+                except StopValidating:
+                    raise
                 except Exception as err:
                     raise ValidatorError(err)
         except StopValidating:
@@ -157,6 +160,10 @@ class Runner(object):
     def validators(self):
         return self._validators
 
+    @validators.setter
+    def validators(self, validators):
+        self._validators = validators
+
     @property
     def validator(self):
         return self._validator
@@ -187,6 +194,7 @@ class Runner(object):
 
 
 from utools.maya.widgets import validator_res
+reload(validator_res)
 PROGRESS_ROLE = QtCore.Qt.UserRole + 1
 PROGRESS_COLOR = QtGui.QColor('#00bcd4')
 
@@ -195,7 +203,7 @@ class ResultFrame(QtGui.QFrame):
     def resizeEvent(self, event):
         for child in self.children():
             if isinstance(child, QtGui.QPushButton):
-                child.move(self.width() / 2, 50)
+                child.move(self.width() / 2, 34)
                 child.raise_()
 
         return super(ResultFrame, self).resizeEvent(event)
@@ -277,6 +285,7 @@ QAbstractItemView::indicator:unchecked {
 background-image: url(':/ui/res/ic_check_box_outline_blank_white_24dp_1x.png');
 }
 QLabel {
+padding: 12px;
 font-size: 30px;
 }
 QPushButton {
@@ -292,6 +301,9 @@ QPushButton {
 border: none;
 background-color: transparent;
 background-image: url(':/ui/res/ic_play_arrow_white_24dp_2x.png');
+}
+QPushButton:hover {
+
 }"""
 WINDOW = None
 class ValidationWindow(QtGui.QMainWindow):
@@ -313,7 +325,7 @@ class ValidationWindow(QtGui.QMainWindow):
         self.tvResults.setModel(self._resultmodel)
         self.lvValidators.setItemDelegate(ValidatorDelegate())
 
-        self.bRun.clicked.connect(self.run)
+        self.bRun.toggled.connect(self.toggleRun)
         selectionmodel = self.tvResults.selectionModel()
         selectionmodel.selectionChanged.connect(self.selectionChangedHandler)
 
@@ -322,6 +334,8 @@ class ValidationWindow(QtGui.QMainWindow):
             item = QtGui.QStandardItem(str(validator))
             item.setData(validator, QtCore.Qt.UserRole)
             item.setCheckable(True)
+            state = QtCore.Qt.Checked if validator.enabled else QtCore.Qt.Unchecked
+            item.setCheckState(state)
             item.setEditable(False)
             self._validatormodel.appendRow(item)
 
@@ -343,19 +357,25 @@ class ValidationWindow(QtGui.QMainWindow):
         self.fResults = ResultFrame(widget)
         self.fResults.setStyleSheet(STYLE_DARK)
         resultlayout = QtGui.QVBoxLayout(self.fResults)
+        resultlayout.setContentsMargins(0, 0, 0, 0)
+        resultlayout.setSpacing(0)
         labelwidget = QtGui.QWidget(self.fResults)
         rowlayout = QtGui.QHBoxLayout(labelwidget)
+        rowlayout.setContentsMargins(0, 0, 0, 0)
+        rowlayout.setSpacing(0)
         self.lResult = QtGui.QLabel(labelwidget)
         self.lResultIcon = QtGui.QLabel(labelwidget)
         rowlayout.addWidget(self.lResult)
         rowlayout.addWidget(self.lResultIcon)
         self.tvResults = QtGui.QTreeView(self.fResults)
         self.tvResults.setHeaderHidden(True)
+        self.tvResults.setSelectionMode(QtGui.QTreeView.ExtendedSelection)
         resultlayout.addWidget(labelwidget)
         resultlayout.addWidget(self.tvResults)
 
         # -- Run button
         self.bRun = QtGui.QPushButton(self.fResults)
+        self.bRun.setCheckable(True)
         self.bRun.setObjectName('bRun')
         self.bRun.setMinimumSize(48, 48)
         self.bRun.setMaximumSize(self.minimumSize())
@@ -369,19 +389,29 @@ class ValidationWindow(QtGui.QMainWindow):
         item = self._validatormodel.itemFromIndex(index)
         state = QtCore.Qt.Checked if item.checkState() != QtCore.Qt.Checked else QtCore.Qt.Unchecked        
         item.setCheckState(state)
+        self._runner.validators[item.row()].enabled = state
+
+    def toggleRun(self):
+        state = self.bRun.isChecked()
+        if state:
+            self.run()
+        else:
+            self._runner.stop()
 
     def run(self):
+        self._resultmodel.clear()
         loop = QtCore.QEventLoop(self)
         for v, i in self._runner.start():
+            if not v.enabled:
+                continue
             item = self._validatormodel.findItems(str(self._runner.validator))[0]
             item.setData((i + 1) / float(v.count), PROGRESS_ROLE)
             loop.processEvents()
-            time.sleep(0.001)
-            # print((i + 1) / float(v.count))
-
-        self._resultmodel.clear()
 
         for validator in self._runner.validators:
+            if not validator.errors and not validator.warnings:
+                continue
+
             parent = QtGui.QStandardItem(str(validator))
             self._resultmodel.appendRow(parent)
             for err in validator.errors:
@@ -393,19 +423,20 @@ class ValidationWindow(QtGui.QMainWindow):
                 parent.appendRow(item)
         self.tvResults.expandAll()
 
-        self.setStatus('err')
+        self.setStatus()
+        self.bRun.setChecked(False)
 
     def selectionChangedHandler(self, selection, deselection):
         selectionmodel = self.tvResults.selectionModel()
         self.itemSelected.emit([s.data() for s in selectionmodel.selectedIndexes() if s.parent().isValid()])
 
-    def setStatus(self, status):
-        if status == 'success':
-            self.lResult.setText('Success')
-            # self.lStatusText.parent().setObjectName('Success')
-        else:
+    def setStatus(self):
+        if self._runner.errors:
             self.lResult.setText('Errors {}'.format(self._runner.errors))
-            # self.lStatusText.parent().setObjectName('Error')
+            self.lResult.parent().setStyleSheet('background-color: #ef5350;')
+        else:
+            self.lResult.setText('Success')
+            self.lResult.parent().setStyleSheet('background-color: #00bcd4;')
 
         # self.lStatusText.parent().style().unpolish(self.lStatusText.parent())
         # self.lStatusText.parent().style().polish(self.lStatusText.parent())
