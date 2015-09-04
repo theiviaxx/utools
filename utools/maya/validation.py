@@ -50,7 +50,7 @@ class Validator(six.with_metaclass(ValidationRegistry, object)):
         self._enabled = self.ENABLED
 
     def __repr__(self):
-        return '<Validator: {}>'.format(self.__class__.__name__)
+        return self.__class__.__name__
 
     @property
     def count(self):
@@ -184,25 +184,134 @@ class Runner(object):
     @property
     def duration(self):
         return self._timeend - self._timestart
-    
-    
 
-FORM, BASE = common.loadUiType(path.path(__file__).expand().parent / 'widgets' / 'validation_window.ui')
+
+from utools.maya.widgets import validator_res
+PROGRESS_ROLE = QtCore.Qt.UserRole + 1
+PROGRESS_COLOR = QtGui.QColor('#00bcd4')
+
+
+class ResultFrame(QtGui.QFrame):
+    def resizeEvent(self, event):
+        for child in self.children():
+            if isinstance(child, QtGui.QPushButton):
+                child.move(self.width() / 2, 50)
+                child.raise_()
+
+        return super(ResultFrame, self).resizeEvent(event)
+
+
+class RunButton(QtGui.QPushButton):
+    def paintEvent(self, event):
+        event.accept()
+        painter = QtGui.QPainter(self)
+        painter.setRenderHints(QtGui.QPainter.Antialiasing)
+
+        #painter.setPen(QtGui.QColor('#aaa'))
+        #painter.drawRect(event.rect())
+        path = QtGui.QPainterPath()
+        scaled = QtCore.QRect(event.rect())
+        size = scaled.size()
+        size.scale(scaled.size().width() - 4, scaled.size().height() - 4, QtCore.Qt.KeepAspectRatio)
+        scaled.setSize(size)
+        scaled.moveCenter(event.rect().center())
+        path.moveTo(scaled.center())
+        path.arcTo(scaled, 0.0, 360.0)
+        painter.setBrush(QtGui.QColor('#fff'))
+        painter.drawPath(path)
+
+
+class ValidatorDelegate(QtGui.QStyledItemDelegate):
+    def paint(self, painter, option, index):
+        option = QtGui.QStyleOptionViewItemV4(option)
+        painter.setRenderHints(QtGui.QPainter.TextAntialiasing)
+        # super(ValidatorDelegate, self).paint(painter, option, index)
+
+        # -- Draw icon
+        # print(index.data(QtCore.Qt.CheckState))
+        if index.data(QtCore.Qt.CheckStateRole) == QtCore.Qt.Checked:
+            pixmap = QtGui.QPixmap(':/ui/res/ic_check_box_white_24dp_1x.png')
+        else:
+            pixmap = QtGui.QPixmap(':/ui/res/ic_check_box_outline_blank_white_24dp_1x')
+        painter.drawPixmap(option.rect.left() + 16, option.rect.center().y() - 8, pixmap)
+
+        # -- Draw text
+        font = QtGui.QFont('Roboto', 12)
+        painter.setFont(font)
+        painter.drawText(
+            option.rect.left() + 48,
+            option.rect.center().y() + 8,
+            index.data(QtCore.Qt.DisplayRole)
+        )
+
+        # -- Draw progress        
+        progress = index.data(PROGRESS_ROLE)
+        if progress:
+            rect = option.rect
+            rect.setY(rect.y() + rect.height())
+            rect.setHeight(4)
+            
+            rect.setWidth(rect.width() * progress )
+            painter.fillRect(rect, PROGRESS_COLOR)
+
+    def sizeHint(self, option, index):
+        return QtCore.QSize(100, 48)
+
+
+
+# FORM, BASE = common.loadUiType(path.path(__file__).expand().parent / 'widgets' / 'validation_window.ui')
+STYLE = """QWidget {
+color: #fff;
+font-family: Roboto;
+font-size: 14px;
+}
+QWidget:focus {
+    border: none;
+}
+QAbstractItemView::indicator {
+width: 24px;
+height: 24px;
+background-image: url(':/ui/res/ic_check_box_white_24dp_1x.png');
+}
+QAbstractItemView::indicator:unchecked {
+background-image: url(':/ui/res/ic_check_box_outline_blank_white_24dp_1x.png');
+}
+QLabel {
+font-size: 30px;
+}
+QPushButton {
+border: none;
+background-color: transparent;
+background-image: url(':/ui/res/ic_play_arrow_white_24dp_2x.png');
+}
+"""
+STYLE_LIGHT = "background-color: #373737"
+STYLE_DARK = """
+QWidget {background-color: #303030 }
+QPushButton {
+border: none;
+background-color: transparent;
+background-image: url(':/ui/res/ic_play_arrow_white_24dp_2x.png');
+}"""
 WINDOW = None
-class ValidationWindow(FORM, BASE):
+class ValidationWindow(QtGui.QMainWindow):
     itemSelected = QtCore.Signal(list)
 
     def __init__(self, runner, parent=None):
         super(ValidationWindow, self).__init__(parent)
 
-        self.setupUi(self)
+        #self.setupUi(self)
+        self.setStyleSheet(STYLE)
 
         self._runner = runner
         self._validatormodel = QtGui.QStandardItemModel()
         self._resultmodel = QtGui.QStandardItemModel()
 
+        self.build()
+
         self.lvValidators.setModel(self._validatormodel)
         self.tvResults.setModel(self._resultmodel)
+        self.lvValidators.setItemDelegate(ValidatorDelegate())
 
         self.bRun.clicked.connect(self.run)
         selectionmodel = self.tvResults.selectionModel()
@@ -212,11 +321,63 @@ class ValidationWindow(FORM, BASE):
         for validator in runner.validators:
             item = QtGui.QStandardItem(str(validator))
             item.setData(validator, QtCore.Qt.UserRole)
+            item.setCheckable(True)
+            item.setEditable(False)
             self._validatormodel.appendRow(item)
 
+        self.resize(800, 600)
+
+    def build(self):
+        widget = QtGui.QWidget(self)
+        layout = QtGui.QHBoxLayout(widget)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+        self.setCentralWidget(widget)
+
+        # -- Validators
+        self.lvValidators = QtGui.QListView(widget)
+        self.lvValidators.setStyleSheet(STYLE_LIGHT)
+        self.lvValidators.clicked.connect(self.checked)
+
+        # -- Results
+        self.fResults = ResultFrame(widget)
+        self.fResults.setStyleSheet(STYLE_DARK)
+        resultlayout = QtGui.QVBoxLayout(self.fResults)
+        labelwidget = QtGui.QWidget(self.fResults)
+        rowlayout = QtGui.QHBoxLayout(labelwidget)
+        self.lResult = QtGui.QLabel(labelwidget)
+        self.lResultIcon = QtGui.QLabel(labelwidget)
+        rowlayout.addWidget(self.lResult)
+        rowlayout.addWidget(self.lResultIcon)
+        self.tvResults = QtGui.QTreeView(self.fResults)
+        self.tvResults.setHeaderHidden(True)
+        resultlayout.addWidget(labelwidget)
+        resultlayout.addWidget(self.tvResults)
+
+        # -- Run button
+        self.bRun = QtGui.QPushButton(self.fResults)
+        self.bRun.setObjectName('bRun')
+        self.bRun.setMinimumSize(48, 48)
+        self.bRun.setMaximumSize(self.minimumSize())
+        self.bRun.setAutoFillBackground(False)
+
+        layout.addWidget(self.lvValidators)
+        layout.addWidget(self.fResults)
+        layout.setStretch(1, 1)
+
+    def checked(self, index):
+        item = self._validatormodel.itemFromIndex(index)
+        state = QtCore.Qt.Checked if item.checkState() != QtCore.Qt.Checked else QtCore.Qt.Unchecked        
+        item.setCheckState(state)
+
     def run(self):
+        loop = QtCore.QEventLoop(self)
         for v, i in self._runner.start():
-            print(v.count, i)
+            item = self._validatormodel.findItems(str(self._runner.validator))[0]
+            item.setData((i + 1) / float(v.count), PROGRESS_ROLE)
+            loop.processEvents()
+            time.sleep(0.001)
+            # print((i + 1) / float(v.count))
 
         self._resultmodel.clear()
 
@@ -240,15 +401,15 @@ class ValidationWindow(FORM, BASE):
 
     def setStatus(self, status):
         if status == 'success':
-            self.lStatusText.setText('Success')
-            self.lStatusText.parent().setObjectName('Success')
+            self.lResult.setText('Success')
+            # self.lStatusText.parent().setObjectName('Success')
         else:
-            self.lStatusText.setText('Errors {}'.format(self._runner.errors))
-            self.lStatusText.parent().setObjectName('Error')
+            self.lResult.setText('Errors {}'.format(self._runner.errors))
+            # self.lStatusText.parent().setObjectName('Error')
 
-        self.lStatusText.parent().style().unpolish(self.lStatusText.parent())
-        self.lStatusText.parent().style().polish(self.lStatusText.parent())
-        self.lStatusText.parent().update()
+        # self.lStatusText.parent().style().unpolish(self.lStatusText.parent())
+        # self.lStatusText.parent().style().polish(self.lStatusText.parent())
+        # self.lStatusText.parent().update()
 
 
 def main(callback=None):

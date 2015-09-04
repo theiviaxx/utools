@@ -76,7 +76,7 @@ background-image: url(':/ui/res/ic_check_box_outline_blank_white_24dp_1x');
      </widget>
     </item>
     <item>
-     <widget class="QFrame" name="frame_2">
+     <widget class="QFrame" name="fMain">
       <property name="styleSheet">
        <string notr="true">background-color: #373737</string>
       </property>
@@ -157,32 +157,6 @@ background-color: #00bcd4;
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="bRun">
-         <property name="minimumSize">
-          <size>
-           <width>48</width>
-           <height>48</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>48</width>
-           <height>48</height>
-          </size>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>:/ui/res/ic_play_arrow_white_24dp_2x.png</normaloff>:/ui/res/ic_play_arrow_white_24dp_2x.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>24</width>
-           <height>24</height>
-          </size>
-         </property>
         </widget>
        </item>
        <item>
