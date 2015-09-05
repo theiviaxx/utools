@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="ui">
+    <file>res/ic_closed_white_24dp_2x.png</file>
+    <file>res/ic_play_arrow_color_24dp_2x.png</file>
+    <file>res/ic_play_arrow_color_hover_24dp_2x.png</file>
+    <file>res/ic_stop_color_24dp_2x.png</file>
     <file>res/ic_check_box_outline_blank_white_24dp_1x.png</file>
     <file>res/ic_check_box_white_24dp_1x.png</file>
     <file>res/ic_done_white_24dp_2x.png</file>
