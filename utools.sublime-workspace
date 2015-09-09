@@ -540,7 +540,7 @@
 			"file": "install.bat",
 			"settings":
 			{
-				"buffer_size": 289,
+				"buffer_size": 548,
 				"line_ending": "Windows"
 			}
 		},
@@ -580,7 +580,7 @@
 			"file": "utools/maya/common.py",
 			"settings":
 			{
-				"buffer_size": 1660,
+				"buffer_size": 2531,
 				"line_ending": "Windows",
 				"name": "import shiboken"
 			}
@@ -639,10 +639,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/theiv_000/Google Drive/projects/utools",
-		"/C/Users/theiv_000/Google Drive/projects/utools/utools",
-		"/C/Users/theiv_000/Google Drive/projects/utools/utools/maya",
-		"/C/Users/theiv_000/Google Drive/projects/utools/utools/maya/widgets"
+		"/C/Users/theiv_000/Google Drive/projects/utools"
 	],
 	"file_history":
 	[
@@ -1069,6 +1066,7 @@
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
+							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1105,6 +1103,7 @@
 							],
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
+							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1120,22 +1119,25 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 289,
+						"buffer_size": 548,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								279,
-								279
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"git_savvy.file_path": "C:\\Users\\theiv_000\\Google Drive\\projects\\utools\\install.bat",
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
-							"syntax": "Packages/Batch File/Batch File.tmLanguage"
+							"syntax": "Packages/Batch File/Batch File.tmLanguage",
+							"tabs_extra_last_activated": 1441600765.69,
+							"tabs_extra_last_activated_sheet_index": 2,
+							"tabs_extra_spawned": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1167,6 +1169,7 @@
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
+							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1199,6 +1202,7 @@
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
+							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1235,6 +1239,7 @@
 							],
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
+							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1267,6 +1272,7 @@
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
+							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1282,15 +1288,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1660,
+						"buffer_size": 2531,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1367,
-								1367
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1298,7 +1304,10 @@
 							"auto_name": "import shiboken",
 							"git_savvy.file_path": "C:\\Users\\theiv_000\\Google Drive\\projects\\utools\\utools\\maya\\common.py",
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1328,7 +1337,8 @@
 						{
 							"git_savvy.file_path": "C:\\Users\\theiv_000\\Google Drive\\projects\\utools\\utools\\maya\\widgets\\README.rst",
 							"git_savvy.repo_path": "C:/Users/theiv_000/Google Drive/projects/utools",
-							"syntax": "Packages/RestructuredText/reStructuredText.tmLanguage"
+							"syntax": "Packages/RestructuredText/reStructuredText.tmLanguage",
+							"tabs_extra_spawned": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -326,8 +326,8 @@ class ValidationWindow(QtGui.QMainWindow):
         self.build()
 
         self.lvValidators.setModel(self._validatormodel)
-        self.tvResults.setModel(self._resultmodel)
         self.lvValidators.setItemDelegate(ValidatorDelegate())
+        self.tvResults.setModel(self._resultmodel)
 
         self.bRun.toggled.connect(self.toggleRun)
         selectionmodel = self.tvResults.selectionModel()
@@ -426,6 +426,7 @@ class ValidationWindow(QtGui.QMainWindow):
             item = self._validatormodel.findItems(str(self._runner.validator))[0]
             item.setData((i + 1) / float(v.count), PROGRESS_ROLE)
             loop.processEvents()
+            yield v, (i + 1), v.count
 
         for validator in self._runner.validators:
             if not validator.errors and not validator.warnings:
@@ -458,7 +459,8 @@ class ValidationWindow(QtGui.QMainWindow):
 
     def selectionChangedHandler(self, selection, deselection):
         selectionmodel = self.tvResults.selectionModel()
-        self.itemSelected.emit([s.data(ResultModel.DAG_ROLE) for s in selectionmodel.selectedIndexes() if s.parent().isValid()])
+        dags = [s.data(ResultModel.DAG_ROLE) for s in selectionmodel.selectedIndexes() if s.parent().isValid() and s.data(ResultModel.DAG_ROLE) != s.data(ResultModel.MESSAGE_ROLE)]
+        self.itemSelected.emit(dags)
 
     def setStatus(self):
         if self._runner.errors:
@@ -470,18 +472,32 @@ class ValidationWindow(QtGui.QMainWindow):
             self.lResultIcon.setStyleSheet("background-image: url(':/ui/res/ic_done_white_24dp_2x.png');background-repeat: no-repeat;")
             self.lResult.parent().setStyleSheet('background-color: #64b5f6;')
 
+    def wasSuccess(self):
+        return self._runner.errors == 0 and self._runner.warnings == 0
 
-def main(callback=None):
+
+def main(dirs=(), callback=None, silent=False):
     global WINDOW
     if WINDOW:
         WINDOW.close()
 
     runner = Runner()
-    runner.discover((r"C:\tmp\validation",))
+    runner.discover(dirs)
     WINDOW = ValidationWindow(runner, common.getMayaWindow())
     if callback:
         WINDOW.itemSelected.connect(callback)
-    WINDOW.show()
+
+    if silent:
+        prog = QtGui.QProgressDialog(common.getMayaWindow())
+        for validator, i, total in WINDOW.run():
+            prog.setLabelText(str(validator))
+            prog.setMaximum(total)
+            prog.setValue(i)
+        prog.close()
+        if not WINDOW.wasSuccess():
+            WINDOW.show()
+    else:
+        WINDOW.show()
 
     
     
