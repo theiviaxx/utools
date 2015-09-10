@@ -51,8 +51,8 @@ QAbstractItemView::branch:closed:has-children {
     image: url(':/ui/res/ic_closed_white_24dp_2x.png');
 }
 #ListValidators {background-color: #373737}
-    QFrame {background-color: #303030 }
-    QPushButton {
+QFrame {background-color: #303030 }
+#FrameResults QPushButton {
     border: none;
     background-color: transparent;
     background-image: url(':/ui/res/ic_play_arrow_color_24dp_2x.png');
@@ -373,16 +373,20 @@ class ValidationWindow(QtGui.QMainWindow):
         resultlayout = QtGui.QVBoxLayout(self.fResults)
         resultlayout.setContentsMargins(0, 0, 0, 0)
         resultlayout.setSpacing(0)
-        labelwidget = QtGui.QWidget(self.fResults)
-        rowlayout = QtGui.QHBoxLayout(labelwidget)
-        rowlayout.setContentsMargins(0, 0, 0, 0)
-        rowlayout.setSpacing(0)
-        self.lResult = QtGui.QLabel('Ready', labelwidget)
-        # self.lWarnings = QtGui.QLabel(labelwidget)
-        self.lResultIcon = QtGui.QLabel(labelwidget)
-        self.lResultIcon.setMaximumWidth(48)
-        rowlayout.addWidget(self.lResult)
-        rowlayout.addWidget(self.lResultIcon)
+
+        resultlabels = QtGui.QWidget(self.fResults)
+        resultslabelslayout = QtGui.QHBoxLayout(resultlabels)
+        resultslabelslayout.setContentsMargins(0, 0, 0, 0)
+        resultslabelslayout.setSpacing(0)
+
+        self._labels = {
+            'ready': self.__labelWidget('Ready', 'transparent', '', resultlabels),
+            'success': self.__labelWidget('Success', '#64b5f6', ':/ui/res/ic_done_white_24dp_2x.png', resultlabels),
+            'errors': self.__labelWidget('Errors', '#f44336', ':/ui/res/ic_error_white_24dp_2x.png', resultlabels),
+            'warnings': self.__labelWidget('Warnings', '#ffb300', ':/ui/res/ic_warning_white_24dp_2x.png', resultlabels),
+        }
+        self._labels['ready'].show()
+        
         self.lTiming = QtGui.QLabel(self.fResults)
         self.lTiming.setObjectName('Timing')
         self.tvResults = QtGui.QTreeView(self.fResults)
@@ -390,7 +394,9 @@ class ValidationWindow(QtGui.QMainWindow):
         self.tvResults.setSelectionMode(QtGui.QTreeView.ExtendedSelection)
         self.tvResults.setFocusPolicy(QtCore.Qt.NoFocus)
         self.tvResults.setIndentation(30)
-        resultlayout.addWidget(labelwidget)
+        for label in self._labels.values():
+            resultslabelslayout.addWidget(label)
+        resultlayout.addWidget(resultlabels)
         resultlayout.addWidget(self.lTiming)
         resultlayout.addWidget(self.tvResults)
 
@@ -415,7 +421,7 @@ class ValidationWindow(QtGui.QMainWindow):
     def toggleRun(self):
         state = self.bRun.isChecked()
         if state:
-            self.run()
+            list(self.run())
         else:
             self._runner.stop()
 
@@ -448,6 +454,17 @@ class ValidationWindow(QtGui.QMainWindow):
                     item.setData(err.node, ResultModel.DAG_ROLE)
                 else:
                     item.setData(err.message, ResultModel.DAG_ROLE)
+                parent.appendRow(item)
+
+            for err in validator.warnings:
+                item = QtGui.QStandardItem()
+                item.setData(err.message, ResultModel.MESSAGE_ROLE)
+                item.setIcon(QtGui.QPixmap(':/ui/res/ic_warning_white_24dp_2x.png'))
+                item.setEditable(False)
+                if err.node:
+                    item.setData(err.node, ResultModel.DAG_ROLE)
+                else:
+                    item.setData(err.message, ResultModel.DAG_ROLE)
                 
 
                 parent.appendRow(item)
@@ -463,17 +480,39 @@ class ValidationWindow(QtGui.QMainWindow):
         self.itemSelected.emit(dags)
 
     def setStatus(self):
+        for widget in self._labels.values():
+            widget.hide()
+
         if self._runner.errors:
-            self.lResult.setText('Errors {}'.format(self._runner.errors))
-            self.lResultIcon.setStyleSheet("background-image: url(':/ui/res/ic_error_white_24dp_2x.png');background-repeat: no-repeat;")
-            self.lResult.parent().setStyleSheet('background-color: #f44336;')
-        else:
-            self.lResult.setText('Success')
-            self.lResultIcon.setStyleSheet("background-image: url(':/ui/res/ic_done_white_24dp_2x.png');background-repeat: no-repeat;")
-            self.lResult.parent().setStyleSheet('background-color: #64b5f6;')
+            self._labels['errors'].children()[1].setText('Errors {}'.format(self._runner.errors))
+            self._labels['errors'].show()
+
+        if self._runner.warnings:
+            self._labels['warnings'].children()[1].setText('Warnings {}'.format(self._runner.warnings))
+            self._labels['warnings'].show()
+        
+        if not self._runner.errors and not self._runner.warnings:
+            self._labels['success'].show()
 
     def wasSuccess(self):
         return self._runner.errors == 0 and self._runner.warnings == 0
+
+    def __labelWidget(self, text, color, icon, parent):
+        frame = QtGui.QFrame(parent)
+        frame.setStyleSheet('background-color: {};'.format(color))
+        rowlayout = QtGui.QHBoxLayout(frame)
+        rowlayout.setContentsMargins(0, 0, 0, 0)
+        rowlayout.setSpacing(0)
+        label = QtGui.QLabel(text, frame)
+        icon = QtGui.QLabel(frame)
+        icon.setMaximumWidth(48)
+        icon.setStyleSheet("background-image: url('{}');background-repeat: no-repeat;".format(icon))
+        rowlayout.addWidget(label)
+        rowlayout.addWidget(icon)
+
+        frame.hide()
+        
+        return frame
 
 
 def main(dirs=(), callback=None, silent=False):
@@ -496,6 +535,8 @@ def main(dirs=(), callback=None, silent=False):
         prog.close()
         if not WINDOW.wasSuccess():
             WINDOW.show()
+            return False
+        return True
     else:
         WINDOW.show()
 
