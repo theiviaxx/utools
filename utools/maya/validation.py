@@ -495,7 +495,7 @@ class ValidationWindow(QtGui.QMainWindow):
             self._labels['success'].show()
 
     def wasSuccess(self):
-        return self._runner.errors == 0 and self._runner.warnings == 0
+        return self._runner.errors == 0
 
     def __labelWidget(self, text, color, icon, parent):
         frame = QtGui.QFrame(parent)
