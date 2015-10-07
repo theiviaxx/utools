@@ -1,103 +1,12 @@
 from maya import cmds
 from maya import OpenMaya as om
 
+class NormalMode(object):
+    Unweighted, AreaWeighted, AngleWeighted, AngleAreaWeighted = range(4)
+
 
 # =================================================================================================
-def alignRounded():
-    """
-    Select faces
-    For each edge get the local Z as vector
-    For each vertex in edge, apply the vector to vertex
-    """
-    
-    selection = om.MSelectionList()
-    om.MGlobal.getActiveSelectionList(selection)
-    seliter = om.MItSelectionList(selection, om.MFn.kMeshEdgeComponent)
-    dag = om.MDagPath()
-    comp = om.MObject()
-    
-    verts = {}
-    border = []
-    faceverts = {}
-    facelist = []
-    
-    while not seliter.isDone():
-        seliter.getDagPath(dag, comp)
-        
-        mesh = om.MFnMesh(dag)
-        
-        ## -- Get all of our border edges:
-        eiter = om.MItMeshEdge(dag)
-        while not eiter.isDone():
-            if eiter.onBoundary():
-                border.append(eiter.index())
-            
-            eiter.next()
-        
-        ## -- Find normals of soft edges in selection
-        eiter = om.MItMeshEdge(dag, comp)
-        while not eiter.isDone():
-            faces = om.MIntArray()
-            eiter.getConnectedFaces(faces)
-            facelist += faces
-            
-            veca = om.MVector()
-            mesh.getPolygonNormal(faces[0], veca)
-            if eiter.isSmooth():
-                vecb = om.MVector()
-                mesh.getPolygonNormal(faces[1], vecb)
-                vec = veca + vecb
-            else:
-                vec = veca
-                
-            verts[eiter.index(0)] = vec
-            verts[eiter.index(1)] = vec
-            
-            eiter.next()
-        
-        ## -- Find all vertices that are not connected to a hard edge
-        viter = om.MItMeshVertex(dag)
-        keys = verts.keys()
-        
-        while not viter.isDone():
-            edges = om.MIntArray(4)
-            viter.getConnectedEdges(edges)
-            index = viter.index()
-            if index in keys:
-                for n in edges:
-                    if n in border:
-                        continue
-                    
-                    if not mesh.isEdgeSmooth(n) or n in border:
-                        ## -- Connected to hard edge so remove it
-                        f = om.MIntArray()
-                        viter.getConnectedFaces(f)
-                        f = set(f) & set(facelist)
-                        faceverts[index] = [verts[index], list(f)]
-                        del verts[index]
-                        
-                        break
-            
-            viter.next()
-    
-        seliter.next()
-    
-    cmds.undoInfo(ock=True)
-
-    ## -- Set the normals of each vert
-    for idx, vec in verts.iteritems():
-        mesh.setVertexNormal(vec, idx)
-    
-    for idx, data in faceverts.iteritems():
-        normal = data[0]
-        flist = data[1]
-        for f in flist:
-            mesh.setFaceVertexNormal(normal, f, idx)
-    
-    cmds.undoInfo(cck=True)
-
-# =================================================================================================
-def lock(lock=True):
+def lockNormals(lock=True):
     """ Lock all normals on selected meshes """
     selection = om.MSelectionList()
     om.MGlobal.getActiveSelectionList(selection)
@@ -131,16 +40,16 @@ def lock(lock=True):
         mesh.unlockVertexNormals(verts)
 
 # =================================================================================================
-def unlock():
+def unlockNormals():
     """ Unlock all normals on selected meshes """
-    lock(False)
+    lockNormals(False)
 
 # =================================================================================================
 def setVertexNormalMethod(mode):
-    """
-    Sets the vertexNormalMethod attribute on all selected:
-    0 - unweighted          2 - angle weighted
-    1 - area weighted       3 - angle and area weighted
+    """Sets the vertexNormalMethod attribute on all selected
+
+    See `.NormalMode` for enums
+
     :param mode: the mode to switch to
     :type mode: int
     """
@@ -148,17 +57,15 @@ def setVertexNormalMethod(mode):
     if len(selection) == 0:
         cmds.error("No mesh selected")
 
-    meshnodes = cmds.ls( selection, l=True, exactType='mesh', o=True)
-    meshDescendents = cmds.listRelatives(selection, fullPath=True, allDescendents=True, type='mesh')
-    meshnodes = meshnodes + meshDescendents
+    meshnodes = cmds.ls(selection, l=True, exactType='mesh', o=True) or []
+    meshnodes += cmds.listRelatives(selection, f=True, ad=True, type='mesh') or []
 
     for mesh in meshnodes:
-        print mesh + 'changed'
-        ext.setAttr (mesh, 'vertexNormalMethod', mode)
+        cmds.setAttr('{}.vertexNormalMethod'.format(mesh), mode)
 
 # =================================================================================================
 def toggleVertexNormalDisplay():
-    """ Sets the Vertex Normal display to all and the length to 0.05 """
+    """Sets the Vertex Normal display to all and the length to 0.05 """
     
     state = cmds.polyOptions(q=True, dn=True)
     if state is None:
@@ -170,19 +77,19 @@ def toggleVertexNormalDisplay():
 # =================================================================================================
 def softNormals():
     """Sets all selected edges to soft"""
-    selection = ext.getSelection()
+    selection = cmds.ls(sl=True, l=True)
     if selection:
-        objects = list(set(ext.ls(selection, o=True)))
+        objects = list(set(cmds.ls(selection, o=True, l=True) or []))
         for obj in objects:
-            edges = [e for e in selection if ext.ls(e, o=True)[0] == obj]
+            edges = [e for e in selection if cmds.ls(e, o=True, l=True)[0] == obj]
             cmds.polySoftEdge(edges, a=180)
 
 # =================================================================================================
 def hardNormals():
     """Sets all selected edges to hard"""
-    selection = ext.getSelection()
+    selection = cmds.ls(sl=True, l=True)
     if selection:
-        objects = list(set(ext.ls(selection, o=True)))
+        objects = list(set(cmds.ls(selection, o=True, l=True) or []))
         for obj in objects:
-            edges = [e for e in selection if ext.ls(e, o=True)[0] == obj]
+            edges = [e for e in selection if cmds.ls(e, o=True, l=True)[0] == obj]
             cmds.polySoftEdge(edges, a=0)

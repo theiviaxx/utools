@@ -22,6 +22,8 @@
 import xml.etree.ElementTree as xml
 from cStringIO import StringIO
 
+from maya import cmds
+from maya import mel
 import maya.OpenMayaUI as apiUI
 import shiboken
 from PySide import QtGui
@@ -58,3 +60,7 @@ def loadUiType(uiFile):
         form_class = frame['Ui_%s'%form_class]
         base_class = eval('QtGui.%s'%widget_class)
     return form_class, base_class
+
+def focusViewport():
+    mel.eval('findNewCurrentModelView;')
+    cmds.showWindow('MayaWindow')

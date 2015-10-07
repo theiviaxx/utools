@@ -23,6 +23,8 @@
 
 from maya import cmds
 
+from utools.maya import common
+
 
 def enableSnap(enable, context):
     if context == 'Move':
@@ -40,5 +42,68 @@ def setSnapValue(val, context):
     else:
         cmds.manipRotateContext(context, e=True, snapValue=val)
 
-def setGridSpacing(spacing):
-    cmds.grid(spacing=spacing, d=spacing)
+def setGridSpacing(div):
+    kwargs = {
+        'size': 20,
+        'spacing': 1,
+        'divisions': div,
+        'displayAxes': True,
+        'displayAxesBold': True,
+        'displayGridLines': True,
+        'displayDivisionLines': True
+    }
+    
+    cmds.grid(**kwargs)
+    
+    uvpanel = cmds.getPanel(sty='polyTexturePlacementPanel')
+    uvpanelexists = cmds.textureWindow(
+        uvpanel[0],
+        q=True,
+        exists=True,
+    )
+    if uvpanelexists:
+        spacing = cmds.textureWindow(uvpanel[0], q=True, spacing=True)
+        
+        if spacing <= 1:
+            setUVGrid(kwargs['spacing'])
+    
+    cmds.optionVar(floatValue=('gridSpacing', kwargs['spacing']))
+    cmds.optionVar(floatValue=('gridDivisions', kwargs['divisions']))
+    cmds.optionVar(floatValue=('gridSize', kwargs['size']))
+    cmds.optionVar(intValue=('displayGridAxes', kwargs['displayAxes']))
+    cmds.optionVar(intValue=('displayGridLines', kwargs['displayGridLines']))
+    cmds.optionVar(intValue=('displayGridAxesAccented', kwargs['displayAxesBold']))
+    cmds.optionVar(intValue=('displayDivisionLines', kwargs['displayDivisionLines']))
+    cmds.optionVar(floatValue=('textureWindowGridDivisions', kwargs['divisions']))
+    
+    common.focusViewport()
+
+def setUVGrid(spacing):
+    uvpanel = cmds.getPanel(sty='polyTexturePlacementPanel')[0]
+    
+    if not cmds.textureWindow(uvpanel, exists=True):
+        return False
+    
+    kwargs = {
+        'e': True,
+        'divisions': cmds.grid(q=True, d=True),
+        'spacing': spacing,
+        'size': 2,
+        'displayAxes': True,
+        'displayGridLines': True,
+        'displayDivisionLines': True,
+    }
+    
+    cmds.textureWindow(uvpanel, **kwargs)
+    
+    for k, v in kwargs.items():
+        if k == 'e':
+            continue
+        
+        if k.startswith('display'):
+            var = 'textureWindow%s' % k.capitalize()
+        else:
+            var = 'textureWindowGrid%s' % k.capitalize()
+        cmds.optionVar(fv=(var, v))
+    
+    common.focusViewport()

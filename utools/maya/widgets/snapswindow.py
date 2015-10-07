@@ -116,24 +116,27 @@ class SnapsWindow(QtGui.QMainWindow):
         group.setChecked(state)
         group.toggled.connect(snaps.enableGrid)
         group.setFlat(True)
-        layout = QtGui.QHBoxLayout(group)
+        layout = QtGui.QGridLayout(group)
         layout.setSpacing(1)
         layout.setContentsMargins(0, 0, 0, 0)
         self._layout.addWidget(group)
         
         btngroup = QtGui.QButtonGroup(self)
         
-        values = [0.25, 0.5, 1, 2, 4]
+        values = [1, 2, 4, 8, 16, 32, 64, 128]
         current = cmds.grid(q=True, spacing=True)
+        row = 0
         
-        for value in values:
+        for i, value in enumerate(values):
+            if i > 3:
+                row = 1
             btn = QtGui.QPushButton(group)
             btn.setCheckable(True)
             btn.setChecked(current == value)
             btn.setMinimumWidth(40)
             btn.setText(str(Fraction(str(value))))
             btn.clicked.connect(partial(snaps.setGridSpacing, value))
-            layout.addWidget(btn)
+            layout.addWidget(btn, row, i % 4)
             btngroup.addButton(btn)
 
 
